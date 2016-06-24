@@ -1,4 +1,4 @@
-package com.example.gbadesc.medtracker99;
+package com.example.gbadesc.medtracker99.application;
 
 import android.app.Application;
 
