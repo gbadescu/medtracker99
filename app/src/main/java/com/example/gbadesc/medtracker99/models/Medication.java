@@ -5,6 +5,36 @@ package com.example.gbadesc.medtracker99.models;
  */
 public class Medication {
     private String name;
-    private Double dosage;
+    private float dosage;
     private String units;
+
+    public Medication(String name, float dosage, String units) {
+        this.name = name;
+        this.dosage = dosage;
+        this.units = units;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getDosage() {
+        return dosage;
+    }
+
+    public void setDosage(Float dosage) {
+        this.dosage = dosage;
+    }
+
+    public String getUnits() {
+        return units;
+    }
+
+    public void setUnits(String units) {
+        this.units = units;
+    }
 }
