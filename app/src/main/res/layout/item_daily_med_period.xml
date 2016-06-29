@@ -1,6 +1,7 @@
 <RelativeLayout android:layout_alignParentBottom="true"
     android:layout_width="match_parent"
     android:layout_height="@dimen/palette_height"
+    android:padding="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 <ImageButton
@@ -8,8 +9,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/shape_medication"
     android:id="@+id/ivButton"
-    android:paddingLeft="5dp"
-    android:paddingTop="5dp"
     />
 
             <TextView

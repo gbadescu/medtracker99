@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gbadesc.medtracker99.R;
 import com.example.gbadesc.medtracker99.activities.DetailsActivity;
@@ -49,8 +49,6 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_daily, parent, false);
 
-        medAdapter = new DailyPeriodMedAdapter(mContext,mPrescriptions);
-
         // Find RecyclerView and bind to adapter
         rvMeds = (RecyclerView) itemView.findViewById(R.id.rvPeriodMeds);
 
@@ -68,9 +66,6 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
         // There are three LayoutManager provided at the moment: GridLayoutManager, StaggeredGridLayoutManager and LinearLayoutManager.
         rvMeds.setLayoutManager(layout);
 
-        // Bind adapter to list
-        rvMeds.setAdapter(medAdapter);
-
         return new VH(itemView, mContext);
     }
 
@@ -81,6 +76,18 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
         holder.rootView.setTag(dailySchedule);
         holder.tvName.setText(dailySchedule.getName());
 
+        medAdapter = new DailyPeriodMedAdapter(mContext,mPrescriptions, new setOnClick() {
+            @Override
+            public void setOnClick() {
+                Toast.makeText(holder.itemView .getContext(),"FF  F",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        // Bind adapter to list
+        rvMeds.setAdapter(medAdapter);
+
         mPrescriptions.clear();
 
         List<Prescription> prescriptions = Prescription.getDailyMedsForPeriod(dailySchedule,new Date());
@@ -88,6 +95,7 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
         mPrescriptions.addAll(prescriptions);
 
 
+        medAdapter.setmPrescriptions(prescriptions);
 
         medAdapter.notifyDataSetChanged();
 
@@ -109,7 +117,7 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
         final TextView tvName;
         final View vPalette;
 
-        public VH(View itemView, final Context context) {
+        public VH(final View itemView, final Context context) {
             super(itemView);
             rootView = itemView;
             ivProfile = (ImageView)itemView.findViewById(R.id.ivProfile);
@@ -120,20 +128,7 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    final Contact contact = (Contact)v.getTag();
-                    if (contact != null) {
-                        // Fire an intent when a contact is selected
-                        // Pass contact object in the bundle and populate details activity.
-
-                        Intent i = new Intent(context,DetailsActivity.class);
-                        i.putExtra(DetailsActivity.EXTRA_CONTACT,contact);
-                        Pair<View, String> p1 = Pair.create((View)ivProfile, "profile");
-                        Pair<View, String> p2 = Pair.create(vPalette, "palette");
-                        Pair<View, String> p3 = Pair.create((View)tvName, "text");
-                        ActivityOptionsCompat options = ActivityOptionsCompat.
-                                makeSceneTransitionAnimation((Activity) context, p1, p2, p3);
-                        context.startActivity(i);
-                    }
+                    Toast.makeText(itemView.getContext(),"FFF",Toast.LENGTH_SHORT).show();
                 }
             });
         }
