@@ -3,8 +3,6 @@ package com.example.gbadesc.medtracker99.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,8 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gbadesc.medtracker99.R;
-import com.example.gbadesc.medtracker99.activities.DetailsActivity;
-import com.example.gbadesc.medtracker99.models.Contact;
+import com.example.gbadesc.medtracker99.activities.DailyMedsDetail;
 import com.example.gbadesc.medtracker99.models.DailySchedule;
 import com.example.gbadesc.medtracker99.models.Prescription;
 
@@ -128,7 +125,20 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(),"FFF",Toast.LENGTH_SHORT).show();
+
+                    final DailySchedule dailySchedule = (DailySchedule) v.getTag();
+
+                    if (dailySchedule != null) {
+                        // Fire an intent when a contact is selected
+                        // Pass contact object in the bundle and populate details activity.
+
+                        Intent i = new Intent(context,DailyMedsDetail.class);
+                        i.putExtra(DailyMedsDetail.EXTRA_DAILY_SCHEDULE, dailySchedule);
+
+                        context.startActivity(i);
+                    }
+
+
                 }
             });
         }

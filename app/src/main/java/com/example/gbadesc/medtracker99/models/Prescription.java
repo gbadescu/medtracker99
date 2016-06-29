@@ -2,6 +2,7 @@ package com.example.gbadesc.medtracker99.models;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by gbadesc on 6/24/16.
  */
-public class Prescription {
+public class Prescription implements Serializable{
     public Medication getMedication() {
         return medication;
     }

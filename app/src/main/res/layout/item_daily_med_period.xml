@@ -19,4 +19,11 @@
                 android:transitionName="text"
                 android:textSize="@dimen/contact_text_size"
                 android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/medName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:transitionName="text"
+        android:visibility="invisible" />
 </RelativeLayout>

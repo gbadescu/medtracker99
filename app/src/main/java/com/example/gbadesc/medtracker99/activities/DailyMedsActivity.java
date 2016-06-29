@@ -1,8 +1,6 @@
 package com.example.gbadesc.medtracker99.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -12,7 +10,6 @@ import android.widget.ImageButton;
 
 import com.example.gbadesc.medtracker99.R;
 import com.example.gbadesc.medtracker99.adapters.BootstrapPagerAdapter;
-import com.example.gbadesc.medtracker99.models.Contact;
 
 public class DailyMedsActivity extends AppCompatActivity {
 
@@ -71,7 +68,7 @@ public class DailyMedsActivity extends AppCompatActivity {
     public void onAddAction(MenuItem mi) {
         // handle click here
 
-        /*
+/*
         // Add a new contact
         contacts.add(0, Contact.getRandomContact(this));
 // Notify the adapter that an item was inserted at position 0
@@ -87,7 +84,9 @@ public class DailyMedsActivity extends AppCompatActivity {
                 })  // action text on the right side
                 .setActionTextColor(ContextCompat.getColor(ContactsActivity.this, R.color.accent))
                 .setDuration(3000).show();
-                */
+
+               */
+
     }
 
 

@@ -1,12 +1,13 @@
 package com.example.gbadesc.medtracker99.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by gbadesc on 6/24/16.
  */
-public class DailySchedule {
+public class DailySchedule implements Serializable {
 
     private String startTime;
     private String endTime;
