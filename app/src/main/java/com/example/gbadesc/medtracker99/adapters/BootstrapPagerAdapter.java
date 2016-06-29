@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.gbadesc.medtracker99.fragments.DailyFragment;
 
+import java.util.Locale;
 import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
@@ -40,8 +41,12 @@ public class BootstrapPagerAdapter extends FragmentPagerAdapter {
         DateTime pagerdate = DateTime.now(TimeZone.getDefault());
         DateTime days = pagerdate.plusDays(position - 5000);
 
+
+
         Bundle bundle = new Bundle();
-        bundle.putString("date", days.format("YYYY-MM-DD").toString());
+        bundle.putString("date", days.format("WWW, MMM DD",new Locale("US")));
+
+
 
         DailyFragment roosterFragment = new DailyFragment();
         roosterFragment.setArguments(bundle);

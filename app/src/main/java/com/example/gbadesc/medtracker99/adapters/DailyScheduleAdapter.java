@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
     private Activity mContext;
     private List<DailySchedule> mDailySchedules;
     private List<Prescription> mPrescriptions;
-    private static DailyPeriodMedAdapter medAdapter;
+    private DailyPeriodMedAdapter medAdapter;
     private RecyclerView rvMeds;
 
 
@@ -59,6 +60,10 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
         // Define 2 column grid layout
         final GridLayoutManager layout = new GridLayoutManager(mContext, 2);
 
+        //final CustomLinearLayoutManager layout = new CustomLinearLayoutManager(mContext);
+
+        //final LinearLayoutManager layout = new LinearLayoutManager(mContext);
+
         // Unlike ListView, you have to explicitly give a LayoutManager to the RecyclerView to position items on the screen.
         // There are three LayoutManager provided at the moment: GridLayoutManager, StaggeredGridLayoutManager and LinearLayoutManager.
         rvMeds.setLayoutManager(layout);
@@ -75,13 +80,20 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
         DailySchedule dailySchedule = mDailySchedules.get(position);
         holder.rootView.setTag(dailySchedule);
         holder.tvName.setText(dailySchedule.getName());
+
         mPrescriptions.clear();
 
         List<Prescription> prescriptions = Prescription.getDailyMedsForPeriod(dailySchedule,new Date());
 
         mPrescriptions.addAll(prescriptions);
 
+
+
         medAdapter.notifyDataSetChanged();
+
+
+
+
 
     }
 

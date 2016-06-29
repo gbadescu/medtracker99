@@ -1,5 +1,7 @@
 package com.example.gbadesc.medtracker99.models;
 
+import android.graphics.Color;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -98,11 +100,11 @@ public class Prescription {
         {
             case 0:
                 ArrayList<Prescription> l1 = new ArrayList<>();
-                Medication med1 = new Medication("Aspirin",81,"mg");
+                Medication med1 = new Medication("Aspirin",81,"mg", Color.BLUE);
                 Prescription p1 = new Prescription("P1");
                 p1.setMedication(med1);
 
-                Medication med6 = new Medication("Bayer",81,"mg");
+                Medication med6 = new Medication("Bayer",81,"mg",Color.YELLOW);
                 Prescription p6 = new Prescription("P6");
                 p6.setMedication(med6);
 
@@ -112,28 +114,28 @@ public class Prescription {
                 return l1;
             case 1:
                 ArrayList<Prescription> l2 = new ArrayList<>();
-                Medication med2 = new Medication("Tylenol",81,"mg");
+                Medication med2 = new Medication("Tylenol",81,"mg",Color.GREEN);
                 Prescription p2 = new Prescription("P2");
                 p2.setMedication(med2);
                 l2.add(p2);
                 return l2;
             case 2:
                 ArrayList<Prescription> l3 = new ArrayList<>();
-                Medication med3 = new Medication("Motrin",81,"mg");
+                Medication med3 = new Medication("Motrin",81,"mg",Color.CYAN);
                 Prescription p3 = new Prescription("P3");
                 p3.setMedication(med3);
                 l3.add(p3);
                 return l3;
             case 3:
                 ArrayList<Prescription> l4 = new ArrayList<>();
-                Medication med4 = new Medication("Advil",81,"mg");
+                Medication med4 = new Medication("Advil",81,"mg",Color.WHITE);
                 Prescription p4 = new Prescription("P4");
                 p4.setMedication(med4);
                 l4.add(p4);
                 return l4;
             case 4:
                 ArrayList<Prescription> l5 = new ArrayList<>();
-                Medication med5 = new Medication("Aleve",81,"mg");
+                Medication med5 = new Medication("Aleve",81,"mg",Color.CYAN);
                 Prescription p5 = new Prescription("P5");
                 p5.setMedication(med5);
                 l5.add(p5);

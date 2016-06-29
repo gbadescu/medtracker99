@@ -7,11 +7,17 @@ public class Medication {
     private String name;
     private float dosage;
     private String units;
+    private int color;
 
-    public Medication(String name, float dosage, String units) {
+    public int getColor() {
+        return color;
+    }
+
+    public Medication(String name, float dosage, String units, int color) {
         this.name = name;
         this.dosage = dosage;
         this.units = units;
+        this.color = color;
     }
 
     public String getName() {

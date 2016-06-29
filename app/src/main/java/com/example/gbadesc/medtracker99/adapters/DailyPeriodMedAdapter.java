@@ -1,10 +1,14 @@
 package com.example.gbadesc.medtracker99.adapters;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gbadesc.medtracker99.R;
@@ -35,22 +39,32 @@ public class DailyPeriodMedAdapter extends RecyclerView.Adapter<DailyPeriodMedAd
 
         fh.txt.setText(mPrescriptions.get(pos).getName());
 
+        GradientDrawable bgShape = (GradientDrawable)fh.myImg.getBackground();
+
+        bgShape.setColor(mPrescriptions.get(pos).getMedication().getColor());
+
         // other implementation
 
     }
 
     @Override
     public int getItemCount() {
+
         return mPrescriptions.size();
     }
 
-    static class FormHolder extends RecyclerView.ViewHolder{
+    public final static class FormHolder extends RecyclerView.ViewHolder{
 
         TextView txt;
+        //get the image button by id
+        ImageButton myImg;
+
+
 
         public FormHolder(View itemView) {
             super(itemView);
             txt = (TextView) itemView.findViewById(R.id.tvName);
+            myImg = (ImageButton) itemView.findViewById(R.id.ivButton);
         }
     }
 
