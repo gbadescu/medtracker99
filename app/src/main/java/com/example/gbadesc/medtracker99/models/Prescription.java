@@ -1,7 +1,5 @@
 package com.example.gbadesc.medtracker99.models;
 
-import android.graphics.Color;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +9,17 @@ import java.util.List;
  * Created by gbadesc on 6/24/16.
  */
 public class Prescription implements Serializable{
+
+    private static ArrayList<Prescription> prescriptionList;
+
+    public static ArrayList<Prescription> getPrescriptionList() {
+        return prescriptionList;
+    }
+
+    public static void setPrescriptionList(ArrayList<Prescription> prescriptionList) {
+        Prescription.prescriptionList = prescriptionList;
+    }
+
     public Medication getMedication() {
         return medication;
     }
@@ -97,49 +106,74 @@ public class Prescription implements Serializable{
 
     public static List<Prescription> getDailyMedsForPeriod(DailySchedule dailySchedule, Date date) {
 
+        Prescription prescription;
+        int size = Prescription.getPrescriptionList().size();
+
+
+
         switch (dailySchedule.getPeriod())
         {
             case 0:
                 ArrayList<Prescription> l1 = new ArrayList<>();
-                Medication med1 = new Medication("Aspirin",81,"mg", Color.BLUE);
-                Prescription p1 = new Prescription("P1");
-                p1.setMedication(med1);
 
-                Medication med6 = new Medication("Bayer",81,"mg",Color.YELLOW);
-                Prescription p6 = new Prescription("P6");
-                p6.setMedication(med6);
+                for (int i=0; i< size; i++)
+                {
+                    prescription = Prescription.getPrescriptionList().get(i);
 
-                l1.add(p1);
-                l1.add(p6);
+                    if (prescription.getSchedule().isMorning()) {
+                        l1.add(prescription);
+                    }
+                }
 
                 return l1;
             case 1:
                 ArrayList<Prescription> l2 = new ArrayList<>();
-                Medication med2 = new Medication("Tylenol",81,"mg",Color.GREEN);
-                Prescription p2 = new Prescription("P2");
-                p2.setMedication(med2);
-                l2.add(p2);
+
+                for (int i=0; i< size; i++)
+                {
+                    prescription = Prescription.getPrescriptionList().get(i);
+
+                    if (prescription.getSchedule().isNoon()) {
+                        l2.add(prescription);
+                    }
+                }
+
                 return l2;
             case 2:
                 ArrayList<Prescription> l3 = new ArrayList<>();
-                Medication med3 = new Medication("Motrin",81,"mg",Color.CYAN);
-                Prescription p3 = new Prescription("P3");
-                p3.setMedication(med3);
-                l3.add(p3);
+
+                for (int i=0; i< size; i++)
+                {
+                    prescription = Prescription.getPrescriptionList().get(i);
+
+                    if (prescription.getSchedule().isAfternoon()) {
+                        l3.add(prescription);
+                    }
+                }
                 return l3;
             case 3:
                 ArrayList<Prescription> l4 = new ArrayList<>();
-                Medication med4 = new Medication("Advil",81,"mg",Color.WHITE);
-                Prescription p4 = new Prescription("P4");
-                p4.setMedication(med4);
-                l4.add(p4);
+
+                for (int i=0; i< size; i++)
+                {
+                    prescription = Prescription.getPrescriptionList().get(i);
+
+                    if (prescription.getSchedule().isEvening()) {
+                        l4.add(prescription);
+                    }
+                }
                 return l4;
             case 4:
                 ArrayList<Prescription> l5 = new ArrayList<>();
-                Medication med5 = new Medication("Aleve",81,"mg",Color.CYAN);
-                Prescription p5 = new Prescription("P5");
-                p5.setMedication(med5);
-                l5.add(p5);
+
+                for (int i=0; i< size; i++)
+                {
+                    prescription = Prescription.getPrescriptionList().get(i);
+
+                    if (prescription.getSchedule().isNight()) {
+                        l5.add(prescription);
+                    }
+                }
                 return l5;
             default:
                 return null;

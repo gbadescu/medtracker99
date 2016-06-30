@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="10dp"
         android:transitionName="text"
+        android:layout_gravity="right"
          />
 
     <TextView
@@ -19,6 +20,7 @@
         android:transitionName="text"
         android:paddingRight="10dp"
         android:layout_toRightOf="@id/medName"
+        android:layout_gravity="right"
          />
 
     <TextView
@@ -28,6 +30,7 @@
         android:transitionName="text"
         android:paddingRight="10dp"
         android:layout_toRightOf="@id/medDose"
+        android:layout_gravity="right"
          />
 
 

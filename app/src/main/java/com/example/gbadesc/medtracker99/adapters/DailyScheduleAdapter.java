@@ -28,9 +28,10 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
     private List<Prescription> mPrescriptions;
     private DailyPeriodMedAdapter medAdapter;
     private RecyclerView rvMeds;
+    private String mDate;
 
 
-    public DailyScheduleAdapter(Activity context, List<DailySchedule> dailySchedules) {
+    public DailyScheduleAdapter(Activity context, List<DailySchedule> dailySchedules,String date) {
         mContext = context;
         if (dailySchedules == null) {
             throw new IllegalArgumentException("contacts must not be null");
@@ -39,7 +40,11 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
 
         mPrescriptions = new ArrayList<Prescription>();
 
+        mDate = date;
+
     }
+
+
 
     // Inflate the view based on the viewType provided.
     @Override
@@ -96,7 +101,27 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
 
         medAdapter.notifyDataSetChanged();
 
+// Navigate to contact details activity on click of card view.
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                final DailySchedule dailySchedule = (DailySchedule) v.getTag();
+
+                if (dailySchedule != null) {
+                    // Fire an intent when a contact is selected
+                    // Pass contact object in the bundle and populate details activity.
+
+                    Intent i = new Intent(mContext,DailyMedsDetail.class);
+                    i.putExtra(DailyMedsDetail.EXTRA_DAILY_SCHEDULE, dailySchedule);
+                    i.putExtra(DailyMedsDetail.EXTRA_DATE, mDate );
+
+                    mContext.startActivity(i);
+                }
+
+
+            }
+        });
 
 
 
@@ -121,26 +146,7 @@ public class DailyScheduleAdapter extends RecyclerView.Adapter<DailyScheduleAdap
             tvName = (TextView)itemView.findViewById(R.id.tvName);
             vPalette = itemView.findViewById(R.id.vPalette);
 
-            // Navigate to contact details activity on click of card view.
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    final DailySchedule dailySchedule = (DailySchedule) v.getTag();
-
-                    if (dailySchedule != null) {
-                        // Fire an intent when a contact is selected
-                        // Pass contact object in the bundle and populate details activity.
-
-                        Intent i = new Intent(context,DailyMedsDetail.class);
-                        i.putExtra(DailyMedsDetail.EXTRA_DAILY_SCHEDULE, dailySchedule);
-
-                        context.startActivity(i);
-                    }
-
-
-                }
-            });
         }
     }
 }

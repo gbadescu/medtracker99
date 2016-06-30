@@ -4,8 +4,8 @@ package com.example.gbadesc.medtracker99.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +64,7 @@ public class DailyFragment extends Fragment {
         rvDaily.setHasFixedSize(true);
 
         // Define 2 column grid layout
-        final GridLayoutManager layout = new GridLayoutManager(getContext(), 2);
+        final StaggeredGridLayoutManager layout = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 
         // Unlike ListView, you have to explicitly give a LayoutManager to the RecyclerView to position items on the screen.
         // There are three LayoutManager provided at the moment: GridLayoutManager, StaggeredGridLayoutManager and LinearLayoutManager.
@@ -74,7 +74,7 @@ public class DailyFragment extends Fragment {
         dailySchedules = DailySchedule.getDailySchedules();
 
         // Create an adapter
-        mAdapter = new DailyScheduleAdapter(getActivity(), dailySchedules);
+        mAdapter = new DailyScheduleAdapter(getActivity(), dailySchedules, date);
 
         // Bind adapter to list
         rvDaily.setAdapter(mAdapter);

@@ -18,7 +18,7 @@ import java.util.List;
 public class DailyMedsDetail extends AppCompatActivity {
 
     public static final String EXTRA_DAILY_SCHEDULE = "EXTRA_DAILY_SCHEDULE";
-    public static final String EXTRA_PRESCRIPTIONS = "EXTRA_PRESCRIPTIONS";
+    public static final String EXTRA_DATE = "EXTRA_DATE";
     RecyclerView rvMedsDetail;
     DailyMedsAdapter medsAdapter;
 
@@ -28,6 +28,7 @@ public class DailyMedsDetail extends AppCompatActivity {
         setContentView(R.layout.activity_daily_meds_detail);
 
         DailySchedule dailySchedule =  (DailySchedule) getIntent().getExtras().getSerializable(EXTRA_DAILY_SCHEDULE);
+        String date = getIntent().getExtras().getString(EXTRA_DATE);
 
         List<Prescription> prescriptions = Prescription.getDailyMedsForPeriod(dailySchedule,new Date());
 
@@ -59,6 +60,6 @@ public class DailyMedsDetail extends AppCompatActivity {
 
         TextView tvName = (TextView) findViewById(R.id.tvName);
 
-        tvName.setText(dailySchedule.getName());
+        tvName.setText(dailySchedule.getName()+" - "+ date);
     }
 }

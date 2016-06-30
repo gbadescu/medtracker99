@@ -33,7 +33,7 @@
             <View
                 android:id="@+id/vPalette"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:transitionName="palette"/>
 
             <TextView
