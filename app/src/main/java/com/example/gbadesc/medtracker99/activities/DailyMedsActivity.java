@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class DailyMedsActivity extends AppCompatActivity {
+    ViewPager pager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class DailyMedsActivity extends AppCompatActivity {
 
         createSamplePrescriptions();
 
-        final ViewPager pager = (ViewPager) findViewById(R.id.vpPager);
+        pager = (ViewPager) findViewById(R.id.vpPager);
 
         pager.setAdapter(new BootstrapPagerAdapter(getResources(), getSupportFragmentManager()));
         pager.setCurrentItem(5000, false);
@@ -144,7 +145,7 @@ public class DailyMedsActivity extends AppCompatActivity {
 
         SecureRandom random = new SecureRandom();
 
-        String medName =  new BigInteger(130, random).toString(32);
+        String medName =  new BigInteger(20, random).toString(16);
 
         Medication med5 = new Medication(medName,81,"mg",color);
 
@@ -167,6 +168,8 @@ public class DailyMedsActivity extends AppCompatActivity {
 
 
         Prescription.setPrescriptionList(prescriptions);
+
+        pager.getAdapter().notifyDataSetChanged();
 
 // Notify the adapter that an item was inserted at position 0
        /* mAdapter.notifyItemInserted(0);

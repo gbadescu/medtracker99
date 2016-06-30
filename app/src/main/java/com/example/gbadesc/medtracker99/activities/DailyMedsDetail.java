@@ -12,8 +12,10 @@ import com.example.gbadesc.medtracker99.adapters.DividerItemDecoration;
 import com.example.gbadesc.medtracker99.models.DailySchedule;
 import com.example.gbadesc.medtracker99.models.Prescription;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import hirondelle.date4j.DateTime;
 
 public class DailyMedsDetail extends AppCompatActivity {
 
@@ -30,7 +32,9 @@ public class DailyMedsDetail extends AppCompatActivity {
         DailySchedule dailySchedule =  (DailySchedule) getIntent().getExtras().getSerializable(EXTRA_DAILY_SCHEDULE);
         String date = getIntent().getExtras().getString(EXTRA_DATE);
 
-        List<Prescription> prescriptions = Prescription.getDailyMedsForPeriod(dailySchedule,new Date());
+
+
+        List<Prescription> prescriptions = Prescription.getDailyMedsForPeriod(dailySchedule, new DateTime(date));
 
         //view lookups and view initialization
 

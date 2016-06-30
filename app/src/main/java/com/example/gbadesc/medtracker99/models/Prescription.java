@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import hirondelle.date4j.DateTime;
+
 /**
  * Created by gbadesc on 6/24/16.
  */
@@ -104,12 +106,10 @@ public class Prescription implements Serializable{
 
     }
 
-    public static List<Prescription> getDailyMedsForPeriod(DailySchedule dailySchedule, Date date) {
+    public static List<Prescription> getDailyMedsForPeriod(DailySchedule dailySchedule, DateTime date) {
 
         Prescription prescription;
         int size = Prescription.getPrescriptionList().size();
-
-
 
         switch (dailySchedule.getPeriod())
         {

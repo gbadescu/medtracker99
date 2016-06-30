@@ -14,8 +14,10 @@ import com.example.gbadesc.medtracker99.R;
 import com.example.gbadesc.medtracker99.models.DailySchedule;
 import com.example.gbadesc.medtracker99.models.Prescription;
 
-import java.util.Date;
 import java.util.List;
+import java.util.SimpleTimeZone;
+
+import hirondelle.date4j.DateTime;
 
 // Provide the underlying view for an individual list item.
 public class DailyMedsAdapter extends RecyclerView.Adapter<DailyMedsAdapter.VH> {
@@ -33,7 +35,7 @@ public class DailyMedsAdapter extends RecyclerView.Adapter<DailyMedsAdapter.VH> 
         }
         mDailySchedule = dailySchedule;
 
-         List<Prescription> prescriptions = Prescription.getDailyMedsForPeriod(dailySchedule,new Date());
+         List<Prescription> prescriptions = Prescription.getDailyMedsForPeriod(dailySchedule,DateTime.today(new SimpleTimeZone(0,"PST")));
 
         mPrescriptions = prescriptions;
 
