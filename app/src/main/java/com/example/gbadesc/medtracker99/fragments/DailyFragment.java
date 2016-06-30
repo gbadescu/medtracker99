@@ -64,7 +64,7 @@ public class DailyFragment extends Fragment {
         rvDaily.setHasFixedSize(true);
 
         // Define 2 column grid layout
-        final StaggeredGridLayoutManager layout = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        final StaggeredGridLayoutManager layout = new StaggeredGridLayoutManager(2,1);
 
         // Unlike ListView, you have to explicitly give a LayoutManager to the RecyclerView to position items on the screen.
         // There are three LayoutManager provided at the moment: GridLayoutManager, StaggeredGridLayoutManager and LinearLayoutManager.
